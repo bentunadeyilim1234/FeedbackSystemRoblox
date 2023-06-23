@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 
 export default async function Home() {
   const entries = await prisma.feedback.findMany()
+  console.log(entries)
   prisma.$disconnect()
   return (
     <div>
@@ -15,7 +16,7 @@ export default async function Home() {
               feedback={data.feedback} 
               userId={data.userId} 
               playerName={data.playerName} 
-              feedbackId={data.feedbackId} 
+              feedbackId={data.feedbackId}
               rating={data.rating}
               />
         })}
