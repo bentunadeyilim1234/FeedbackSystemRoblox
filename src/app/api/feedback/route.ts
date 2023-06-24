@@ -13,12 +13,13 @@ async function push(pushData: any){
             rating: pushData['f-rating']
         },
     })
+    return entry
 }
 
 export async function POST(request: Request) {
     const data = await request.json()
     push(data)
-        .then(async () => {
+        .then(async (entry) => {
             await prisma.$disconnect()
         })
         .catch(async (e) => {
