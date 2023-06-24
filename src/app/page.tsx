@@ -12,7 +12,7 @@ export default async function Home() {
       <h1 className="text-4xl font-bold text-center my-8">Feedbacks</h1>
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 p-6">
         {entries.map(function(data){
-          return <UserCard 
+          return <UserCard key={data.feedbackId} 
               feedback={data.feedback} 
               userId={data.userId} 
               playerName={data.playerName} 
