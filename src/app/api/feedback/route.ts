@@ -17,14 +17,7 @@ async function push(pushData: any){
 }
 
 export async function POST(request: Request) {
-    const data = await request.json()
-    push(data)
-        .then(async (entry) => {
-            await prisma.$disconnect()
-        })
-        .catch(async (e) => {
-            await prisma.$disconnect()
-            return NextResponse.json({"status": "error", "error": e})
-        })
+    await push(await (request.json()))
+    await prisma.$disconnect()
     return NextResponse.json({"status": "success"})
 }
