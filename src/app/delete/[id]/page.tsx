@@ -8,7 +8,7 @@ export default async function Delete({params}: any) {
     await prisma.feedback.delete({
         where: {
             feedbackId: id
-        }
-    }).catch(e => ({}))
+        },
+    })
     redirect("/")
 }
