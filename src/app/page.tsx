@@ -20,7 +20,7 @@ async function getData() {
 }
 
 async function Home() {
-  const data:FeedbackType[] = [] //await getData()
+  const data = await getData()
   return (
     <div>
       <h1 className="text-4xl font-bold text-center my-8">Feedbacks</h1>
