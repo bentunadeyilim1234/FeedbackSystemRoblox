@@ -1,7 +1,6 @@
 'use client';
 
 import UserCard from "../components/usercard";
-import { useState, useEffect } from 'react';
 
 type FeedbackType = {
   id: string;
@@ -12,27 +11,16 @@ type FeedbackType = {
   rating: number;
 };
 
+/*async function getData() {
+  const res = await fetch('http://localhost:3000/api/all', { cache: 'no-store' })
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+  return res.json()
+}*/
+
 async function Home() {
-  const [data, setData] = useState<FeedbackType[]>([]); // Set initial value to an empty array
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/all');
-        if (response.ok) {
-          const jsonData = await response.json();
-          setData(jsonData);
-        } else {
-          throw new Error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+  const data:FeedbackType[] = [] //await getData()
   return (
     <div>
       <h1 className="text-4xl font-bold text-center my-8">Feedbacks</h1>
