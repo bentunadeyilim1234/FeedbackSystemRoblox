@@ -1,5 +1,3 @@
-'use client';
-
 import UserCard from "../components/usercard";
 
 type FeedbackType = {

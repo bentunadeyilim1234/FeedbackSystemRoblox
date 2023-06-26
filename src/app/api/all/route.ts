@@ -1,9 +1,14 @@
-import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server"
+import { MongoClient } from "mongodb"
 
-const prisma = new PrismaClient()
+require("dotenv").config()
+
+const uri = process.env.DATABASE_URL ?? ""
+
 
 export async function GET(request: Request) {
-    const entries = await prisma.feedback.findMany()
+    const client = new MongoClient(uri)
+    const feedbacks = client.db("roblox").collection("Feedback")
+    const entries = await feedbacks.find({}).toArray()
     return NextResponse.json(entries)
 }
